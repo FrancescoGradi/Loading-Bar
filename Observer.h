@@ -1,0 +1,15 @@
+//
+// Created by Francesco Gradi on 24/02/18.
+//
+
+#ifndef LOADINGBAR_OBSERVER_H
+#define LOADINGBAR_OBSERVER_H
+
+
+class Observer {
+public:
+    virtual void update() = 0;
+};
+
+
+#endif //LOADINGBAR_OBSERVER_H
