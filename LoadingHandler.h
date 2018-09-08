@@ -16,14 +16,23 @@ public:
     LoadingHandler() { this->state = 0; }
     virtual ~LoadingHandler() { }
 
-    virtual void download() {
+    virtual void download(int initial, int msSpeed) {
         // downloading...
-        setState(0);
+        if (initial <= 100 and initial >= 0 and msSpeed > 0) {
 
-        for (int i = 0; i < 100; i++) {
-            std::cout << i << "%" << std::endl;
-            setState(state + 1);
-            wxMilliSleep(500);
+            setState(initial);
+            setMsSpeed(msSpeed);
+
+            for (int i = 0; i < (100 - initial) ; i++) {
+                if (!observers.empty()) {
+                    if (!setState(state + 1))
+                        break;
+                    wxMilliSleep(msSpeed);
+                }
+                else {
+                    break;
+                }
+            }
         }
     }
 
@@ -31,13 +40,22 @@ public:
         return state;
     }
 
-private:
-    void setState(int state) {
-        this->state = state;
-        notify();
+    int getMsSpeed() const {
+        return msSpeed;
     }
 
-    int state;
+    void setMsSpeed(int msSpeed) {
+        LoadingHandler::msSpeed = msSpeed;
+    }
+
+private:
+    bool setState(int state) {
+        this->state = state;
+        return notify();
+    }
+
+    int state, msSpeed;
+
 };
 
 

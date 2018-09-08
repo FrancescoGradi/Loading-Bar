@@ -9,13 +9,13 @@
 #include "Observer.h"
 
 class AbstractSubject {
-private:
+protected:
     std::list<Observer*> observers;
 
 public:
     void add(Observer *o) { observers.push_back(o); }
-    void remove(Observer *o) { observers.remove(o); }
-    void notify();
+    virtual void remove(Observer *o) { observers.remove(o); }
+    bool notify();
 
 };
 

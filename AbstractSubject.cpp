@@ -4,9 +4,16 @@
 
 #include "AbstractSubject.h"
 
-void AbstractSubject::notify() {
+bool AbstractSubject::notify() {
 
     for (auto itr = std::begin(observers); itr != std::end(observers); itr++) {
-        (*itr)->update();
+        if ((*itr)->update()) {
+            continue;
+        }
+        else {
+            remove(*itr);
+            return false;
+        }
     }
+    return true;
 }

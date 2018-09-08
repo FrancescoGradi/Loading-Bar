@@ -3,7 +3,11 @@
 #include <wx/wx.h>
 #endif
 
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+
 #include "Frame.h"
+#include "MainFrame.h"
 
 class MyApp : public wxApp {
 
@@ -11,24 +15,36 @@ public:
     virtual bool OnInit() override;
     virtual int OnExit(void) override;
 
+    int runTests(int argc, char* argv[]) {
+        testing::InitGoogleTest(&argc, argv);
+        RUN_ALL_TESTS();
+
+        return 0;
+    }
+
 };
+
+
+enum {
+    ID_HELLO = 1
+};
+
+
+wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
+                EVT_MENU(ID_HELLO,   MainFrame::OnHello)
+                EVT_MENU(wxID_EXIT,  MainFrame::OnExit)
+                EVT_MENU(wxID_ABOUT, MainFrame::OnAbout)
+wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
 
-    Frame *frame = new Frame(nullptr);
+    MainFrame* mainFrame = new MainFrame("Main menu", wxPoint(50, 50), wxSize(450, 340));
 
-    frame->Show(true);
+    mainFrame->Show(true);
 
-    LoadingHandler *loadingHandler = new LoadingHandler();
-
-    // installo la dipendenza
-    loadingHandler->add(frame);
-    frame->setLoadingHandler(loadingHandler);
-
-    loadingHandler->download();
-
+    //runTests(argc, argv);
 
     return true;
 }

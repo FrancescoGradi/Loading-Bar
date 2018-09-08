@@ -32,6 +32,15 @@ protected:
     wxButton* m_button27;
     LoadingHandler* loadingHandler;
     wxStaticText* m_staticText37;
+    wxFlexGridSizer* flexGridSizer23;
+    wxBoxSizer* boxSizer11;
+
+    bool isActive;
+
+    void buttonCancelClicked(wxCommandEvent &event);
+    void buttonStopClicked(wxCommandEvent &event);
+    void buttonResumeClicked(wxCommandEvent &event);
+    void OnExit(wxCommandEvent& event);
 
 public:
     LoadingHandler *getLoadingHandler() const;
@@ -44,11 +53,15 @@ public:
     wxButton* GetButton25() { return m_button25; }
     wxButton* GetButton27() { return m_button27; }
     wxStaticText* GetStaticText37() { return m_staticText37; }
+    wxFlexGridSizer* GetFlexGridSizer23() { return flexGridSizer23; }
+    wxBoxSizer *getBoxSizer11() const;
 
-    Frame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Loading..."), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500,300), long style = wxDEFAULT_DIALOG_STYLE);
+    Frame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Loading..."),
+            const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500,300),
+            long style = wxDEFAULT_DIALOG_STYLE);
     virtual ~Frame();
 
-    void update() override;
+    bool update() override;
 };
 
 
