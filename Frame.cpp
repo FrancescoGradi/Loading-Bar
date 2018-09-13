@@ -63,7 +63,7 @@ Frame::Frame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoi
 }
 
 Frame::~Frame() {
-
+    loadingHandler->remove(this);
 }
 
 bool Frame::update() {
