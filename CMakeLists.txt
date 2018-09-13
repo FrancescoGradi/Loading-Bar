@@ -9,7 +9,7 @@ add_subdirectory(tests/lib/googletest-master)
 include_directories(tests/lib/googletest-master/googletest/include)
 include_directories(tests/lib/googletest-master/googlemock/include)
 
-set(SOURCE_FILES main.cpp Frame.cpp Frame.h AbstractSubject.cpp AbstractSubject.h Observer.h LoadingHandler.cpp LoadingHandler.h Simpletest.cpp MainFrame.cpp MainFrame.h)
+set(SOURCE_FILES main.cpp Frame.cpp Frame.h AbstractSubject.cpp AbstractSubject.h Observer.h LoadingHandler.cpp LoadingHandler.h tests/MainFrameTest.cpp MainFrame.cpp MainFrame.h tests/FrameSuite.cpp)
 add_executable(LoadingBar ${SOURCE_FILES})
 
 find_package(wxWidgets COMPONENTS net gl core base)

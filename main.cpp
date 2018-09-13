@@ -36,11 +36,12 @@ wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
                 EVT_MENU(wxID_ABOUT, MainFrame::OnAbout)
 wxEND_EVENT_TABLE()
 
+
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
 
-    MainFrame* mainFrame = new MainFrame("Main menu", wxPoint(50, 50), wxSize(450, 340));
+    MainFrame* mainFrame = new MainFrame("Main menu", wxPoint(50, 50), wxSize(400,200));
 
     mainFrame->Show(true);
 

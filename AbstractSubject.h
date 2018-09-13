@@ -9,6 +9,7 @@
 #include "Observer.h"
 
 class AbstractSubject {
+
 protected:
     std::list<Observer*> observers;
 

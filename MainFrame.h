@@ -7,6 +7,8 @@
 
 #include <wx/wx.h>
 #include <wx/frame.h>
+#include <wx/sizer.h>
+
 #include "LoadingHandler.h"
 
 
@@ -14,13 +16,14 @@ class MainFrame : public wxFrame {
 public:
     MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size, long style = wxDEFAULT_FRAME_STYLE);
 
-private:
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
-    void buttonOneClicked(wxCommandEvent & event);
+    void buttonSlowClicked(wxCommandEvent & event);
+    void buttonNormalClicked(wxCommandEvent & event);
+    void buttonFastClicked(wxCommandEvent & event);
 
-    wxDECLARE_EVENT_TABLE();
+wxDECLARE_EVENT_TABLE();
 
 };
 

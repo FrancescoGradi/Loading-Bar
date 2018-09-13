@@ -24,44 +24,47 @@
 #include "LoadingHandler.h"
 
 class Frame : public wxDialog, public Observer {
+
 protected:
-    wxActivityIndicator* m_activityCtrl29;
-    wxStaticLine* m_staticLine17;
-    wxGauge* m_gauge15;
-    wxButton* m_button25;
-    wxButton* m_button27;
+    wxActivityIndicator* activityIndicator;
+    wxStaticLine* line;
+    wxGauge* gauge;
+    wxButton* button1;
+    wxButton* button2;
     LoadingHandler* loadingHandler;
-    wxStaticText* m_staticText37;
-    wxFlexGridSizer* flexGridSizer23;
-    wxBoxSizer* boxSizer11;
+    wxStaticText* staticText;
+    wxFlexGridSizer* flexGridSizer;
+    wxBoxSizer* boxSizer;
 
     bool isActive;
-
-    void buttonCancelClicked(wxCommandEvent &event);
-    void buttonStopClicked(wxCommandEvent &event);
-    void buttonResumeClicked(wxCommandEvent &event);
-    void OnExit(wxCommandEvent& event);
 
 public:
     LoadingHandler *getLoadingHandler() const;
 
     void setLoadingHandler(LoadingHandler *loadingHandler);
 
-    wxActivityIndicator* GetActivityCtrl29() { return m_activityCtrl29; }
-    wxStaticLine* GetStaticLine17() { return m_staticLine17; }
-    wxGauge* GetGauge15() { return m_gauge15; }
-    wxButton* GetButton25() { return m_button25; }
-    wxButton* GetButton27() { return m_button27; }
-    wxStaticText* GetStaticText37() { return m_staticText37; }
-    wxFlexGridSizer* GetFlexGridSizer23() { return flexGridSizer23; }
-    wxBoxSizer *getBoxSizer11() const;
+    wxActivityIndicator* GetActivityIndicator() { return activityIndicator; }
+    wxStaticLine* GetStaticLine() { return line; }
+    wxGauge* GetGauge() { return gauge; }
+    wxButton* GetButton1() { return button1; }
+    wxButton* GetButton2() { return button2; }
+    wxStaticText* GetStaticText() { return staticText; }
+    wxFlexGridSizer* GetFlexGridSizer() { return flexGridSizer; }
+    wxBoxSizer* getBoxSizer() const;
+    bool getIsActive();
 
     Frame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Loading..."),
             const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500,300),
             long style = wxDEFAULT_DIALOG_STYLE);
     virtual ~Frame();
 
+    void buttonCancelClicked(wxCommandEvent &event);
+    void buttonStopClicked(wxCommandEvent &event);
+    void buttonResumeClicked(wxCommandEvent &event);
+    void OnExit(wxCommandEvent& event);
+
     bool update() override;
+
 };
 
 
