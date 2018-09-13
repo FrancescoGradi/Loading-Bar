@@ -14,6 +14,7 @@ protected:
     std::list<Observer*> observers;
 
 public:
+    virtual ~AbstractSubject() {}
     void add(Observer *o) { observers.push_back(o); }
     virtual void remove(Observer *o) { observers.remove(o); }
     bool notify();

@@ -16,25 +16,7 @@ public:
     LoadingHandler() { this->state = 0; }
     virtual ~LoadingHandler() { }
 
-    virtual void download(int initial, int msSpeed) {
-        // downloading...
-        if (initial <= 100 and initial >= 0 and msSpeed > 0) {
-
-            setState(initial);
-            setMsSpeed(msSpeed);
-
-            for (int i = 0; i < (100 - initial) ; i++) {
-                if (!observers.empty()) {
-                    if (!setState(state + 1))
-                        break;
-                    wxMilliSleep(msSpeed);
-                }
-                else {
-                    break;
-                }
-            }
-        }
-    }
+    virtual void download(int initial, int msSpeed);
 
     int getState() const {
         return state;

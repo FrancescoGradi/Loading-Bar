@@ -9,6 +9,7 @@
 class Observer {
 public:
     virtual bool update() = 0;
+    virtual ~Observer() {}
 };
 
 
