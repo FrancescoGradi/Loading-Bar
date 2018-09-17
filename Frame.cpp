@@ -69,6 +69,15 @@ Frame::~Frame() {
 bool Frame::update() {
     if (loadingHandler != nullptr) {
         int state = loadingHandler->getState();
+
+        if (state < 0) {
+            state = 0;
+        }
+
+        if (state > 100) {
+            state = 100;
+        }
+
         gauge->SetValue(state);
 
         std::string s = std::to_string(state);

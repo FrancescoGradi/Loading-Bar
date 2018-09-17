@@ -18,8 +18,6 @@ enum {
 
 void MainFrame::buttonSlowClicked(wxCommandEvent &event) {
 
-    std::cout << "Button slow" << std::endl;
-
     Frame *frame = new Frame(this);
 
     frame->Show(true);
@@ -36,8 +34,6 @@ void MainFrame::buttonSlowClicked(wxCommandEvent &event) {
 
 void MainFrame::buttonNormalClicked(wxCommandEvent &event) {
 
-    std::cout << "Button normal" << std::endl;
-
     Frame *frame = new Frame(this);
 
     frame->Show(true);
@@ -52,8 +48,6 @@ void MainFrame::buttonNormalClicked(wxCommandEvent &event) {
 }
 
 void MainFrame::buttonFastClicked(wxCommandEvent &event) {
-
-    std::cout << "Button fast" << std::endl;
 
     Frame *frame = new Frame(this);
 

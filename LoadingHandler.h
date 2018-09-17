@@ -30,11 +30,12 @@ public:
         LoadingHandler::msSpeed = msSpeed;
     }
 
-private:
     bool setState(int state) {
         this->state = state;
         return notify();
     }
+
+public:
 
     int state, msSpeed;
 

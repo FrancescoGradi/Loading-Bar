@@ -28,6 +28,7 @@ TEST(FrameSuite, OpenClose) {
     frame->Destroy();
 }
 
+
 TEST(FrameSuite, CloseLoading) {
 
     Frame* frame = new Frame(nullptr);
@@ -44,6 +45,7 @@ TEST(FrameSuite, CloseLoading) {
     frame->OnExit(*event);
 
     ASSERT_EQ(frame->IsShown(), 0);
+
 
     frame->Destroy();
     delete loadingHandler;
